@@ -8,8 +8,7 @@ import {MoviesService} from './movies.service';
 })
 export class AppComponent {
   title = 'app';
-  movies;
-  index = 0;
+  movies = [];
   src = 'https://massolutions.biz/wp-content/uploads/2014/12/e5a06942fa42823c88be5f3a834e063d-fantastic-art-bat-family.jpg';
 
   constructor(private moviesService: MoviesService) {
@@ -17,7 +16,10 @@ export class AppComponent {
       (res) => {
         console.log('onSuccess');
         console.log(res);
-        this.movies = res;
+        Object.keys(res).map(key => {
+          this.movies.push(res[key]);
+        });
+        console.log(this.movies);
       },
       (err) => {
         console.log('onError');
@@ -30,9 +32,7 @@ export class AppComponent {
   }
 
   addMovie(event) {
-    this.index++;
     let movie = {
-      id: this.index,
       name: this.title
     };
     this.movies.push(movie);

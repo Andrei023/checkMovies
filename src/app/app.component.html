@@ -1,6 +1,5 @@
 <p *ngIf="movies.length===0">No movies</p>
 <p *ngFor="let movie of movies">
-  <span>{{movie.id}}</span>
   {{movie.name}}
 </p>
 
@@ -11,5 +10,5 @@
 <button (click)="addMovie()">Add movie</button>
 
 
-
+<app-demo></app-demo>
 <router-outlet></router-outlet>
